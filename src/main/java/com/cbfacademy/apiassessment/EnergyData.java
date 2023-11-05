@@ -7,11 +7,10 @@ public class EnergyData {
     private HashMap<String, Integer> electricityProduction2022;
     private HashMap<String, Double> renewableElectricityProduction2022;
 
-    /* this method should return/contain a list of countries and their respective 
-    electricity production levels (TWh) in 2022 */ //- maybe take this comment out
     public EnergyData() {
 
-        // initialise electricity production data
+        /* this should contain a list of countries and their respective electricity production levels (TWh) 
+        in 2022 and initialise the electricity production data */
         this.electricityProduction2022 = new HashMap<String, Integer>() {
             {
                 put("China", 8833);
@@ -27,10 +26,8 @@ public class EnergyData {
             }
         };
 
-    /* this method should return/contain a list of countries and the percentage of 
-    electricity produced from renewable sources in 2022 */ // maybe take this comment out
-        
-        // initialise renewable electricity production data
+        /* this should contain a list of countries and the percentage of electricity produced from renewable 
+        sources in 2022 and initialise renewable electricity production data */
         this.renewableElectricityProduction2022 = new HashMap<String, Double>() {
             {
                 put("China", 30.6);
