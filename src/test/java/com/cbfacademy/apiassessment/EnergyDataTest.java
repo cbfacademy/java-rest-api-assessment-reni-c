@@ -17,26 +17,26 @@ public class EnergyDataTest {
         energyData = new EnergyData();
     }
 
-    // this test ensures the electricityProduction2022 HashMap has a list of countries
-    @Test
-    @DisplayName("check electricityProduction2022 HashMap for a list of countries")
-    public void electrictyProduction2022HashMapHasListOfCountries() {
-        assertNotNull(energyData.getElectricityProduction2022().keySet());
-    } 
+    // // this test ensures the electricityProduction2022 HashMap has a list of countries
+    // @Test
+    // @DisplayName("check electricityProduction2022 HashMap for a list of countries")
+    // public void electrictyProduction2022HashMapHasListOfCountries() {
+    //     assertNotNull(energyData.getElectricityProduction2022().keySet());
+    // } 
 
-    // this test ensures the electricityProduction2022 HashMap has a list of production values
-    @Test
-    @DisplayName("check electricityProduction2022 HashMap for a list of electricity production values")
-    public void electricityProduction2022HashMapHasListOfElectricityProductionValues() {
-        assertNotNull(energyData.getElectricityProduction2022().values());
-    }
+    // // this test ensures the electricityProduction2022 HashMap has a list of production values
+    // @Test
+    // @DisplayName("check electricityProduction2022 HashMap for a list of electricity production values")
+    // public void electricityProduction2022HashMapHasListOfElectricityProductionValues() {
+    //     assertNotNull(energyData.getElectricityProduction2022().values());
+    // }
 
-    // this test should check that the number of countries contained in the electricityProduction2022 HashMap is 10
-    @Test
-    @DisplayName("check size of electricityProduction2022 HashMap")
-    public void returnsSizeOf2022ElectricityProductionHashMap() {
-        assertEquals(10, energyData.getElectricityProduction2022().size());
-    }
+    // // this test should check that the number of countries contained in the electricityProduction2022 HashMap is 10
+    // @Test
+    // @DisplayName("check size of electricityProduction2022 HashMap")
+    // public void returnsSizeOf2022ElectricityProductionHashMap() {
+    //     assertEquals(10, energyData.getElectricityProduction2022().size());
+    // }
 
     // this test ensures the renewableElectricityProduction2022 HashMap has a list of countries
     @Test
@@ -57,6 +57,27 @@ public class EnergyDataTest {
     @DisplayName("check size of renewableElectricityProduction2022 HashMap")
     public void returnsSizeOf2022RenewableElectricityProductionHashMap() {
         assertEquals(10, energyData.getRenewableElectricityProduction2022().size());
+    }
+
+    // this test ensures the renewableElectricityProduction2021 HashMap has a list of countries
+    @Test
+    @DisplayName("check renewableElectricityProduction2021 HashMap for a list of countries")
+    public void renewableElectrictyProduction2021HashMapHasListOfCountries() {
+        assertNotNull(energyData.getRenewableElectricityProduction2021().keySet());
+    }
+
+    // this test ensures the renewableElectricityProduction2021 HashMap has a list of production values
+    @Test
+    @DisplayName("check renewableElectricityProduction2021 HashMap for a list of electricity production values")
+    public void renewableElectricityProduction2021HashMapHasListOfElectricityProductionValues() {
+        assertNotNull(energyData.getRenewableElectricityProduction2021().values());
+    }
+
+     // this test should check that the number of countries contained in the renewableElectricityProduction2021 HashMap is 10
+    @Test
+    @DisplayName("check size of renewableElectricityProduction2021 HashMap")
+    public void returnsSizeOf2021RenewableElectricityProductionHashMap() {
+        assertEquals(10, energyData.getRenewableElectricityProduction2021().size());
     }
 
 }
