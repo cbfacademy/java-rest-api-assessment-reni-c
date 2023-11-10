@@ -1,31 +1,14 @@
 package com.cbfacademy.apiassessment;
 
 import java.util.HashMap;
+import java.util.*;
 
 public class EnergyData {
 
-    // private HashMap<String, Integer> electricityProduction2022;
     private HashMap<String, Double> renewableElectricityProduction2022;
     private HashMap<String, Double> renewableElectricityProduction2021;
 
     public EnergyData() {
-
-        // /* this should contain a list of countries and their respective electricity production levels (TWh) 
-        // in 2022 and initialise the electricity production data */
-        // this.electricityProduction2022 = new HashMap<String, Integer>() {
-        //     {
-        //         put("China", 8833);
-        //         put("United States", 4510);
-        //         put("India", 1802);
-        //         put("Russia", 1165);
-        //         put("Japan", 1063);
-        //         put("Brazil", 668);
-        //         put("Canada", 657);
-        //         put("South Korea", 625);
-        //         put("Germany", 578);
-        //         put("France", 473);
-        //     }
-        // };
 
         /* this should contain a list of countries and the percentage of electricity produced from renewable 
         sources in 2022 and initialise renewable electricity production data */
@@ -42,6 +25,7 @@ public class EnergyData {
                 put("Germany", 44.4);
                 put("France", 25.5);
             }
+            
         };
 
         /* this should contain a list of countries and the percentage of electricity produced from renewable 
@@ -60,11 +44,44 @@ public class EnergyData {
                 put("France", 22.8);
             }
         };
-    }
+   
+        // sort the data in the HashMaps by the values
+        final EnergyData sort = new EnergyData();
+        final Set<Map.Entry<String, Double>> entry = renewableElectricityProduction2022.entrySet();
+        final Set<Map.Entry<String, Double>> entryTwo = renewableElectricityProduction2021.entrySet();
 
-//    public HashMap<String, Integer> getElectricityProduction2022() {
-//         return electricityProduction2022;
-//     } 
+        final Comparator<Map.Entry<String, Double>> comparator = new Comparator<Map.Entry<String, Double>>() {
+            @Override
+            public int compare(Map.Entry<String, Double> o1, Map.Entry<String, Double> o2) {
+                Double value1 = o1.getValue();
+                Double value2 = o2.getValue();
+                return value1.compareTo(value2);
+            }
+        };
+
+        final SortedSet<Map.Entry<String, Double>> sortedSet = new TreeSet(comparator);
+        sortedSet.addAll(entry);
+        final  Map<String, Double> sortedMap = new LinkedHashMap<String, Double>();
+        for(Map.Entry<String, Double> entry1 : sortedSet) {
+            sortedMap.put(entry1.getKey(), entry1.getValue());
+        }
+        
+        final Comparator<Map.Entry<String, Double>> comparatorTwo = new Comparator<Map.Entry<String, Double>>() {
+            @Override
+            public int compare(Map.Entry<String, Double> o1, Map.Entry<String, Double> o2) {
+                Double value1 = o1.getValue();
+                Double value2 = o2.getValue();
+                return value1.compareTo(value2);
+            }
+        };
+
+        final SortedSet<Map.Entry<String, Double>> sortedSetTwo = new TreeSet(comparatorTwo);
+        sortedSetTwo.addAll(entryTwo);
+        final  Map<String, Double> sortedMapTwo = new LinkedHashMap<String, Double>();
+        for(Map.Entry<String, Double> entry1 : sortedSetTwo) {
+            sortedMapTwo.put(entry1.getKey(), entry1.getValue());
+        }
+    }
 
     public HashMap<String, Double> getRenewableElectricityProduction2022() {
         return this.renewableElectricityProduction2022;
@@ -73,4 +90,6 @@ public class EnergyData {
     public HashMap<String, Double> getRenewableElectricityProduction2021() {
         return this.renewableElectricityProduction2021;
     }
+
+    // method to save data to a JSON file
 }
