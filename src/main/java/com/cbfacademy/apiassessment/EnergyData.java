@@ -1,7 +1,10 @@
 package com.cbfacademy.apiassessment;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EnergyData {
 
@@ -92,4 +95,25 @@ public class EnergyData {
     }
 
     // method to save data to a JSON file
+    public void saveToJSON(String filePath) {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writeValue(new File(filePath), "src/main/java/com/cbfacademy/apiassessment/EnergyData.java");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // method to read data from a JSON file
+    public static EnergyData readFromJSON(String filePath) {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File(filePath), EnergyData.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

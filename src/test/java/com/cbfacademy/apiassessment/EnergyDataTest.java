@@ -59,4 +59,10 @@ public class EnergyDataTest {
         assertEquals(10, energyData.getRenewableElectricityProduction2021().size());
     }
 
+    // this test should check that the renewableElectricityProduction2022 HashMap has been ordered
+
+    // this test should check that the renewableElectricityProduction2021 HashMap has been ordered
+
+    // this test should check that the EnergyData.java class has been saved to a JSON file
+
 }
