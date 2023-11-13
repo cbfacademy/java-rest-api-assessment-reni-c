@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.*;
+
 @DisplayName("The Energy Data Class should")
 public class EnergyDataTest {
 
@@ -60,6 +62,12 @@ public class EnergyDataTest {
     }
 
     // this test should check that the renewableElectricityProduction2022 HashMap has been ordered
+    @Test
+    @DisplayName("check that the renewableElectricityProduction2022 HashMap has been ordered")
+    public void renewableElectricityProduction2022HashMapHasBeenOrdered() {
+        Map<String, Double> sortedMap = new ValueSortedMap<>();
+        sortedMap.put(null, null)
+    }
 
     // this test should check that the renewableElectricityProduction2021 HashMap has been ordered
 

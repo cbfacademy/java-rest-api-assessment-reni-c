@@ -31,6 +31,7 @@ public class EnergyInfo implements Energy {
             throw new IllegalArgumentException("Renewable electricity production levels are currently unavailable for your selected country.");
         }
 
-        return "In 2022, " + renewableElectricityProduction2022.get(country1) + " had a renewable electricity production precentage of " + renewableElectricityProduction2022.get(renewableElectricityProduction1);
+        return "In 2022, " + renewableElectricityProduction2022.get(country1) + " had a renewable electricity production percentage of " + renewableElectricityProduction2022.get(renewableElectricityProduction1) + "." + 
+        " In 2021, " + renewableElectricityProduction2021.get(country2) + " had a renewable electricity production percentage of " + renewableElectricityProduction2021.get(renewableElectricityProduction2) + ".";
     }
 }
