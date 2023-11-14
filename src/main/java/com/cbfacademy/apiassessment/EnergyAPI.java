@@ -1,9 +1,9 @@
-package com.cbfacademy.apiassessment;
+// package com.cbfacademy.apiassessment;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RequestMapping;
 
-// @RestController
-@RequestMapping("/energy")
-public class EnergyAPI {
+// // @RestController
+// @RequestMapping("/energy")
+// public class EnergyAPI {
     
-}
+// }

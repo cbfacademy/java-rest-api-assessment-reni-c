@@ -48,8 +48,9 @@ public class EnergyData {
             }
         };
    
+    
         // sort the data in the HashMaps by the values
-        final EnergyData sort = new EnergyData();
+        // final EnergyData sort = new EnergyData();
         final Set<Map.Entry<String, Double>> entry = renewableElectricityProduction2022.entrySet();
         final Set<Map.Entry<String, Double>> entryTwo = renewableElectricityProduction2021.entrySet();
 
@@ -62,7 +63,7 @@ public class EnergyData {
             }
         };
 
-        final SortedSet<Map.Entry<String, Double>> sortedSet = new TreeSet(comparator);
+        final SortedSet<Map.Entry<String, Double>> sortedSet = new TreeSet<>(comparator);
         sortedSet.addAll(entry);
         final  Map<String, Double> sortedMap = new LinkedHashMap<String, Double>();
         for(Map.Entry<String, Double> entry1 : sortedSet) {
@@ -78,7 +79,7 @@ public class EnergyData {
             }
         };
 
-        final SortedSet<Map.Entry<String, Double>> sortedSetTwo = new TreeSet(comparatorTwo);
+        final SortedSet<Map.Entry<String, Double>> sortedSetTwo = new TreeSet<>(comparatorTwo);
         sortedSetTwo.addAll(entryTwo);
         final  Map<String, Double> sortedMapTwo = new LinkedHashMap<String, Double>();
         for(Map.Entry<String, Double> entry1 : sortedSetTwo) {
