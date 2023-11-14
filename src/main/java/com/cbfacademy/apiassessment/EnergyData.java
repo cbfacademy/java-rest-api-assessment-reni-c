@@ -47,10 +47,9 @@ public class EnergyData {
                 put("France", 22.8);
             }
         };
-   
     
         // sort the data in the HashMaps by the values
-        // final EnergyData sort = new EnergyData();
+        // final EnergyData sort = new EnergyData()
         final Set<Map.Entry<String, Double>> entry = renewableElectricityProduction2022.entrySet();
         final Set<Map.Entry<String, Double>> entryTwo = renewableElectricityProduction2021.entrySet();
 
@@ -69,7 +68,9 @@ public class EnergyData {
         for(Map.Entry<String, Double> entry1 : sortedSet) {
             sortedMap.put(entry1.getKey(), entry1.getValue());
         }
+            return sortedMap;
         
+            
         final Comparator<Map.Entry<String, Double>> comparatorTwo = new Comparator<Map.Entry<String, Double>>() {
             @Override
             public int compare(Map.Entry<String, Double> o1, Map.Entry<String, Double> o2) {
@@ -85,6 +86,8 @@ public class EnergyData {
         for(Map.Entry<String, Double> entry1 : sortedSetTwo) {
             sortedMapTwo.put(entry1.getKey(), entry1.getValue());
         }
+            return sortedMapTwo;
+
     }
 
     public HashMap<String, Double> getRenewableElectricityProduction2022() {

@@ -76,6 +76,9 @@ public class EnergyDataTest {
         sortedMap.put("Germany", 44.4);
         sortedMap.put("Canada", 68.8);
         sortedMap.put("Brazil", 89.2);
+
+        assertEquals("{South Korea=8.1, Russia=17.7, Japan=21.6, India=21.9, United States=22.2, France=25.5, China=30.6, Germany=44.4, Canada=68.8, Brazil=89.2}", sortedMap.toString());
+        // assertEquals(sortedMap, energyData.getRenewableElectricityProduction2022());
     }
 
     // this test should check that the renewableElectricityProduction2021 HashMap has been ordered
@@ -93,14 +96,17 @@ public class EnergyDataTest {
         sortedMapTwo.put("Germany", 40.1);
         sortedMapTwo.put("Canada", 67.1);
         sortedMapTwo.put("Brazil", 77.4);
+
+        assertEquals("{South Korea=7.0, Russia=19.2, United States=20.5, Japan=21.0, India=21.4, France=22.8, China=29.1, Germany=40.1, Canada=67.1, Brazil=77.4}", sortedMapTwo.toString());
+
+        // assertEquals(sortedMapTwo, energyData.getRenewableElectricityProduction2021());
     }
 
-    // // this test should check that the EnergyData.java class has been saved to a JSON file
-    // @Test
-    // @DisplayName("check that the HashMaps have been converted to valid JSON types")
-    // public void theJSONFileShouldContainValidData() {
-    //     Map<String, Double> map = new HashMap<String, Double>();
-    //     map.put()
-    // }
+    // this test should check that the EnergyData.java file has been saved to a JSON file
+    @Test
+    @DisplayName("check that the EnergyData file has been saved to a JSON file")
+    public void theEnergyDataFileHasBeenSavedToAJSONFile() {
+        
+    }
 
 }
