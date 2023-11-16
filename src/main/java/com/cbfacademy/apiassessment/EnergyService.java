@@ -2,7 +2,10 @@ package com.cbfacademy.apiassessment;
 
 import java.util.*;
 
-public class EnergyService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class EnergyService implements Energy {
     
     protected HashMap<Integer, HashMap<String, Double>> renewableElectricityProduction;
 
@@ -41,7 +44,13 @@ public class EnergyService {
         renewableElectricityProduction.put(2021, innerMap2);
     }
 
+    @Override
     public HashMap<Integer, HashMap<String, Double>> getRenewableElectricityProduction() {
         return this.renewableElectricityProduction;
     }
+
+    public void setRenewableElectricityProduction(HashMap<Integer, HashMap<String, Double>> data) {
+        this.renewableElectricityProduction = data;
+    }
+    
 }
