@@ -6,12 +6,17 @@ import java.util.HashMap;
 // import java.io.FileWriter;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootApplication
 public class EnergyRepository {
+
+    	public static void main(String[] args) {
+		SpringApplication.run(EnergyRepository.class, args);
+	}
 
 //     public void saveToJSON() {
 
