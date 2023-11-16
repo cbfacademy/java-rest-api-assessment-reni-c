@@ -19,7 +19,7 @@
 
 //     // implement the getRenewableElectricityProdcutionByCountry method
 //     @Override
-//     public String getRenewableElectricityProdcutionByCountry() {
+//     public String getRenewableElectricityProductionByCountry() {
 //         EnergyData energyData;
 //         Set<String> country1 = energyData.getRenewableElectricityProduction2022().keySet();
 //         Set<String> country2 = energyData.getRenewableElectricityProduction2021().keySet();
