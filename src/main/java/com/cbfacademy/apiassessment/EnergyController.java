@@ -1,31 +1,45 @@
 package com.cbfacademy.apiassessment;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+// import java.io.File;
+import java.util.LinkedHashMap;
 
 @RestController
 @RequestMapping("/energy")
 public class EnergyController {
 
-    private final EnergyService energyService;
+    // private final EnergyApplication energyApplication;
     
-    @Autowired
-    public EnergyController(EnergyService energyService) {
-        this.energyService = energyService;
+    // public EnergyController(EnergyApplication energyApplication) {
+    //     this.energyApplication = energyApplication;
+    // }
+
+    
+    // private final EnergyApplication energyAEnergyApplication;
+    // public EnergyController(EnergyApplication energyAEnergyApplication) {
+    //     this.energyAEnergyApplication = energyAEnergyApplication;
+    // }
+
+    // get the whole list of electricity production percentages from renewable sources from the JSON file
+    @GetMapping("/allData")
+    public LinkedHashMap<Integer, LinkedHashMap<String, Double>> getAllEnergyData() {
+        return EnergyApplication.readFromJSON(EnergyApplication.getFilePath());
     }
 
-    // get the whole list of electricity production percentages from renewable sources
-    @GetMapping("/allData")
-    public HashMap<Integer, HashMap<String, Double>> getAllEnergyData() {
-        return energyService.getRenewableElectricityProduction();
-    }
+    // get electricity production percentages for 2021
+    // @GetMapping("/2021")
+    // public LinkedHashMap<Integer, LinkedHashMap<String, Double>> get2021Data() {
+    //     return EnergyApplication.readData.keySet().readFromJSON(filePath);
+    // }
+
+
+    // get electricity percentages for 2022
+
+
+    // get electricity percentages for a specific country
 
 //     // upload new data set for a year
 //     @PostMapping("/energy")

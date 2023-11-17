@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class EnergyService implements Energy {
     
-    protected HashMap<Integer, HashMap<String, Double>> renewableElectricityProduction;
+    protected LinkedHashMap<Integer, LinkedHashMap<String, Double>> renewableElectricityProduction;
 
     public EnergyService() {
 
         // initialize renewable electricity production
-        this.renewableElectricityProduction = new HashMap<>();
+        this.renewableElectricityProduction = new LinkedHashMap<>();
 
-        // create a HashMap within a HashMap for the years you will be producing data for 
-        HashMap<String, Double> innerMap1 = new HashMap<>();
-        HashMap<String, Double> innerMap2 = new HashMap<>();
+        // create a LinkedHashMap within a LinkedHashMap for the years you will be producing renewableElectricityProduction for 
+        LinkedHashMap<String, Double> innerMap1 = new LinkedHashMap<>();
+        LinkedHashMap<String, Double> innerMap2 = new LinkedHashMap<>();
 
         innerMap1.put("China", 30.6);
         innerMap1.put("United States", 22.2);
@@ -40,17 +40,31 @@ public class EnergyService implements Energy {
         innerMap2.put("Germany", 40.1);
         innerMap2.put("France", 22.8);
 
-        renewableElectricityProduction.put(2022, innerMap1);
-        renewableElectricityProduction.put(2021, innerMap2);
+        renewableElectricityProduction.put(2022, convertToOrderedMap(innerMap1));
+        renewableElectricityProduction.put(2021, convertToOrderedMap(innerMap2));
+    }
+
+
+    // order the LinkedHashMap based on the innerMap ascending values
+    private LinkedHashMap<String, Double> convertToOrderedMap(LinkedHashMap<String, Double> innerMap) {
+        List<Map.Entry<String, Double>> entries = new ArrayList<>(innerMap.entrySet());
+        entries.sort(Map.Entry.comparingByValue());
+
+        LinkedHashMap<String, Double> orderedMap = new LinkedHashMap<>();
+        for (Map.Entry<String, Double> entry : entries) {
+            orderedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        return orderedMap;
     }
 
     @Override
-    public HashMap<Integer, HashMap<String, Double>> getRenewableElectricityProduction() {
+    public LinkedHashMap<Integer, LinkedHashMap<String, Double>> getRenewableElectricityProduction() {
         return this.renewableElectricityProduction;
     }
 
-    public void setRenewableElectricityProduction(HashMap<Integer, HashMap<String, Double>> data) {
-        this.renewableElectricityProduction = data;
-    }
-    
+    // public void setRenewableElectricityProduction(LinkedHashMap<Integer, LinkedHashMap<String, Double>> renewableElectricityProduction) {
+    //     this.renewableElectricityProduction = renewableElectricityProduction;
+    // }
+
 }
