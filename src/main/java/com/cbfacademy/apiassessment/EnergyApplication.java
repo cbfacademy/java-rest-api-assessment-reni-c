@@ -5,6 +5,7 @@ import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.util.ResourceUtils;
 import org.springframework.boot.SpringApplication;
 
 
@@ -15,9 +16,6 @@ import com.google.gson.reflect.TypeToken;
 @SpringBootApplication
 public class EnergyApplication {
 
-    // private static final String filePath = "src\\main\\resources\\data\\newfile.json";
-    // static EnergyService energyService = new EnergyService();
-
     	public static void main(String[] args) {
 		SpringApplication.run(EnergyApplication.class, args);
 
@@ -25,43 +23,28 @@ public class EnergyApplication {
         EnergyService energyService = new EnergyService();
         LinkedHashMap<Integer, LinkedHashMap<String, Double>> data = energyService.getRenewableElectricityProduction();
 
-        String filePath = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "data" + File.separator + "newfile.json";
+        String filePath = getFilePath();
         saveToJSON(data, filePath);
-        LinkedHashMap<Integer, LinkedHashMap<String, Double>> readData = readFromJSON(filePath);
+        readFromJSON(filePath);
 	}
+
+    private static String getFilePath() {
+            try {
+            return ResourceUtils.getFile("classpath:newfile.json").getAbsolutePath();   
+        } catch (FileNotFoundException e) {
+            return "newfile.json";
+        }
+    }
 
     //method to save to JSON file
     private static void saveToJSON(LinkedHashMap<Integer, LinkedHashMap<String, Double>> data, String filePath) {
-        try { 
-            File file = new File(filePath);
-            if (!file.exists()) {
-                if (!file.getParentFile().mkdirs()) {
-                    throw new IOException("Failed to create directories.");
-                }
-                if (!file.createNewFile()) {
-                    throw new IOException("Failed to create file.");
-                }
-            }
-
-            FileWriter writer = new FileWriter(file);
+        try (FileWriter writer = new FileWriter(filePath)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(data, writer);
-            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    // // method to save to JSON file
-    // static void saveToJSON() {
-    //     try (FileWriter writer = new FileWriter(filePath)) {
-    //       Gson gson = new Gson(); 
-    //       gson.toJson(energyService.getRenewableElectricityProduction(), writer); 
-    //       writer.flush();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
 
     // method to read from JSON file
     static LinkedHashMap<Integer, LinkedHashMap<String, Double>> readFromJSON(String filePath) {

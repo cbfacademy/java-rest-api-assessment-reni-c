@@ -12,12 +12,13 @@ import java.util.LinkedHashMap;
 public class EnergyController {
 
     private final EnergyService energyService;
+    private final String filePath = "java-rest-api-assessment-reni-c/newfile.json";
     
     public EnergyController(EnergyService energyService) {
         this.energyService = energyService;
     }
 
-    String filePath = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "data" + File.separator + "newfile.json";
+    
     // private final EnergyApplication energyAEnergyApplication;
     // public EnergyController(EnergyApplication energyAEnergyApplication) {
     //     this.energyAEnergyApplication = energyAEnergyApplication;
@@ -30,6 +31,10 @@ public class EnergyController {
     }
 
     // get electricity production percentages for 2021
+    // @GetMapping("/2021")
+    // public LinkedHashMap<Integer, LinkedHashMap<String, Double>> get2021Data() {
+    //     return EnergyApplication.readData.keySet().readFromJSON(filePath);
+    // }
 
 
     // get electricity percentages for 2022
