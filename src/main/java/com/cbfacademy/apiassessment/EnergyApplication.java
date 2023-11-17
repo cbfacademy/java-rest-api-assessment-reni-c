@@ -28,7 +28,7 @@ public class EnergyApplication {
         readFromJSON(filePath);
 	}
 
-    private static String getFilePath() {
+    protected static String getFilePath() {
             try {
             return ResourceUtils.getFile("classpath:newfile.json").getAbsolutePath();   
         } catch (FileNotFoundException e) {

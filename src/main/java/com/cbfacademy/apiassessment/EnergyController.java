@@ -4,19 +4,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
+// import java.io.File;
 import java.util.LinkedHashMap;
 
 @RestController
 @RequestMapping("/energy")
 public class EnergyController {
 
-    private final EnergyService energyService;
-    private final String filePath = "java-rest-api-assessment-reni-c/newfile.json";
+    // private final EnergyApplication energyApplication;
     
-    public EnergyController(EnergyService energyService) {
-        this.energyService = energyService;
-    }
+    // public EnergyController(EnergyApplication energyApplication) {
+    //     this.energyApplication = energyApplication;
+    // }
 
     
     // private final EnergyApplication energyAEnergyApplication;
@@ -27,7 +26,7 @@ public class EnergyController {
     // get the whole list of electricity production percentages from renewable sources from the JSON file
     @GetMapping("/allData")
     public LinkedHashMap<Integer, LinkedHashMap<String, Double>> getAllEnergyData() {
-        return EnergyApplication.readFromJSON(filePath);
+        return EnergyApplication.readFromJSON(EnergyApplication.getFilePath());
     }
 
     // get electricity production percentages for 2021
