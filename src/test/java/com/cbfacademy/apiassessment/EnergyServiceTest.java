@@ -34,14 +34,14 @@ public class EnergyServiceTest {
         assertTrue(energyService.getRenewableElectricityProduction().containsKey(2021));
     }
 
-    // this test checks that the HashMap has a 10 countries for 2022
+    // this test checks that the HashMap has 10 countries for 2022
     @Test
     @DisplayName("check renewableElectricityProduction HashMap has 10 countries for 2022")
     public void renewableElectricityProductionHashMapHas10CountriesFor2022() {
         assertEquals(10, energyService.getRenewableElectricityProduction().get(2022).size());
     }
 
-    // this test checks that the HashMap has a 10 countries for 2021
+    // this test checks that the HashMap has 10 countries for 2021
     @Test
     @DisplayName("check renewableElectricityProduction HashMap has 10 countries for 2021")
     public void renewableElectricityProductionHashMapHas10CountriesFor2021() {
@@ -55,5 +55,21 @@ public class EnergyServiceTest {
         Set<String> expectedCountries = new HashSet<>(Arrays.asList("China", "United States", "India", "Russia", "Japan", "Brazil", "Canada", "South Korea", "Germany", "France"));
         Set<String> actualCountries = energyService.getRenewableElectricityProduction().values().stream().flatMap(innerMap -> innerMap.keySet().stream()).collect(Collectors.toSet());
         assertEquals(expectedCountries, actualCountries);
+    }
+
+    // this test checks that the HashMap has been ordered
+    @Test
+    @DisplayName("check renewableElectricityProduction HashMap has been ordered by values for each year")
+    public void renewableElectricityProductionHashMapHasBeenOrderedByValuesForEachYear() {
+        LinkedHashMap<Integer, LinkedHashMap<String, Double>> renewableElectricityProduction = energyService.getRenewableElectricityProduction();
+        int[] years = {2022, 2021};
+        for (int year : years) {
+            LinkedHashMap<String, Double> innerMap = renewableElectricityProduction.get(year);
+            Double previousValue = Double.MIN_VALUE;
+            for (Double value : innerMap.values()) {
+                assertTrue(value >= previousValue);
+                previousValue = value;
+            }
+        }
     }
 }
