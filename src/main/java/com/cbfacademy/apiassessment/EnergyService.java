@@ -44,6 +44,22 @@ public class EnergyService implements Energy {
         renewableElectricityProduction.put(2021, convertToOrderedMap(innerMap2));
     }
 
+    // method to add new data to the LinkedHashMap (this method will be useful for the @PostMapping request in the controller class)
+    public void addEnergyData(int year, LinkedHashMap<String, Double> newData) {
+        LinkedHashMap<String, Double> existingData = renewableElectricityProduction.get(year);
+            if (existingData == null) {
+                existingData = new LinkedHashMap<>();
+                renewableElectricityProduction.put(year, existingData);
+            }
+
+            for (Map.Entry<String, Double> entry : newData.entrySet()) {
+                if (existingData.containsKey(entry.getKey())) {
+                    existingData.put(entry.getKey(), entry.getValue());
+                } else {
+                    existingData.put(entry.getKey(), entry.getValue());
+                }
+            }
+    }
 
     // order the LinkedHashMap based on the innerMap ascending values
     private LinkedHashMap<String, Double> convertToOrderedMap(LinkedHashMap<String, Double> innerMap) {

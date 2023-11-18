@@ -1,8 +1,11 @@
 package com.cbfacademy.apiassessment;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 // import java.io.File;
@@ -12,6 +15,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/energy")
 public class EnergyController {
+
+    private final EnergyService energyService;
+
+    public EnergyController(EnergyService energyService) {
+        this.energyService = energyService;
+    }
 
     // private final EnergyApplication energyApplication;
     
@@ -26,7 +35,7 @@ public class EnergyController {
     // }
 
     // get the whole list of electricity production percentages from renewable sources from the JSON file
-    @GetMapping("/energy")
+    @GetMapping("/allData")
     public LinkedHashMap<Integer, LinkedHashMap<String, Double>> getAllEnergyData() {
         return EnergyApplication.readFromJSON(EnergyApplication.getFilePath());
     }
@@ -62,18 +71,23 @@ public class EnergyController {
                 resultChina.put(year, new LinkedHashMap<>(Map.of(requiredCountry, countryData.get(requiredCountry))));
             }
         });
-
         return resultChina;
     }
 
     // upload new data set for a year
-    @PostMapping("/2020")
-    public LinkedHashMap<Integer, LinkedHashMap<String, Double>> new2020Data() {
-        
+    @PostMapping("/newData")
+    public ResponseEntity<Object> addEnergyData(@RequestParam int year, @RequestParam LinkedHashMap<String, Double> newData) {
+        try { 
+            energyService.addEnergyData(year, newData);
+            LinkedHashMap<Integer, LinkedHashMap<String, Double>> updatedData = EnergyApplication.readFromJSON(EnergyApplication.getFilePath());
+            return new ResponseEntity<>(updatedData, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Failed to add new data.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 
-//     // add data for a new country
+//     // update data for a new country
 //     @PutMapping("/energy/2022")
 
 
