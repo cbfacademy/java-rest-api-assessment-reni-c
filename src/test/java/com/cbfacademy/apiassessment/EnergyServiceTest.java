@@ -59,8 +59,8 @@ public class EnergyServiceTest {
 
     // this test checks that the HashMap has been ordered
     @Test
-    @DisplayName("check renewableElectricityProduction HashMap has been ordered by values for each year")
-    public void renewableElectricityProductionHashMapHasBeenOrderedByValuesForEachYear() {
+    @DisplayName("check renewableElectricityProduction HashMap has been ordered by ascending values for each year")
+    public void renewableElectricityProductionHashMapHasBeenOrderedByAscendingValuesForEachYear() {
         LinkedHashMap<Integer, LinkedHashMap<String, Double>> renewableElectricityProduction = energyService.getRenewableElectricityProduction();
         int[] years = {2022, 2021};
         for (int year : years) {

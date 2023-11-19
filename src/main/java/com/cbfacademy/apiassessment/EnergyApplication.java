@@ -28,6 +28,7 @@ public class EnergyApplication {
         readFromJSON(filePath);
 	}
 
+    // method to create the JSON file
     protected static String getFilePath() {
             try {
             return ResourceUtils.getFile("classpath:newfile.json").getAbsolutePath();   
@@ -36,8 +37,8 @@ public class EnergyApplication {
         }
     }
 
-    //method to save to JSON file
-    private static void saveToJSON(LinkedHashMap<Integer, LinkedHashMap<String, Double>> data, String filePath) {
+    // method to save the LinkedHashMap in EnergyService to JSON file keeping the same formatting
+    static void saveToJSON(LinkedHashMap<Integer, LinkedHashMap<String, Double>> data, String filePath) {
         try (FileWriter writer = new FileWriter(filePath)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(data, writer);
@@ -46,7 +47,7 @@ public class EnergyApplication {
         }
     }
 
-    // method to read from JSON file
+    // method to read the data from the JSON file
     static LinkedHashMap<Integer, LinkedHashMap<String, Double>> readFromJSON(String filePath) {
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new Gson();
@@ -57,5 +58,4 @@ public class EnergyApplication {
             return new LinkedHashMap<>();
         } 
     }
-
 }

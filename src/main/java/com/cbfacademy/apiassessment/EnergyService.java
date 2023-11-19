@@ -11,10 +11,10 @@ public class EnergyService implements Energy {
 
     public EnergyService() {
 
-        // initialize renewable electricity production
+        // initialise renewable electricity production
         this.renewableElectricityProduction = new LinkedHashMap<>();
 
-        // create a LinkedHashMap within a LinkedHashMap for the years you will be producing renewableElectricityProduction for 
+        // create a LinkedHashMap within a LinkedHashMap for the years you will be producing renewableElectricityProduction percentages for 
         LinkedHashMap<String, Double> innerMap1 = new LinkedHashMap<>();
         LinkedHashMap<String, Double> innerMap2 = new LinkedHashMap<>();
 
@@ -78,9 +78,4 @@ public class EnergyService implements Energy {
     public LinkedHashMap<Integer, LinkedHashMap<String, Double>> getRenewableElectricityProduction() {
         return this.renewableElectricityProduction;
     }
-
-    // public void setRenewableElectricityProduction(LinkedHashMap<Integer, LinkedHashMap<String, Double>> renewableElectricityProduction) {
-    //     this.renewableElectricityProduction = renewableElectricityProduction;
-    // }
-
 }
