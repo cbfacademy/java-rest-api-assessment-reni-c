@@ -1,0 +1,5 @@
+This Energy API is designed to manage and provide information about renewable electricity production percentages for various countries and years. 
+It utilises SpringBoot annotation and RESTful principles as well as including functionalities for reading and writing data to a JSON file. The data is organised in a 
+nested structure with years as keys and country-specific renewable electricity production percentages as values.
+
+The Energy API focuses on CRUD implementation to interact with the data source and produce a variety of outputs based on user needs. It also contains a wide range of exception handling in order to manage any potential errors during the data retrieval processes.
