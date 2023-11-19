@@ -96,7 +96,7 @@ public class EnergyController {
         }
     }
 
-    // upload new renewable electricity percentages for a year
+    // upload new renewable electricity percentages for a new or existing year
     @PostMapping("/newData")
     public ResponseEntity<Object> addEnergyData(@RequestParam int year, @RequestBody LinkedHashMap<String, Double> newData) {
         try { 
@@ -144,7 +144,7 @@ public class EnergyController {
     }
 
     // update data for multiple countries in a specific year
-    @PutMapping("/updateMultipleCountries")
+    @PutMapping("/updateMultipleCountries2022")
     public  ResponseEntity <Object> updateMultipleCountries(@RequestBody LinkedHashMap<String, Double> newData) {
         try {
             int yearToUpdate = 2022;
