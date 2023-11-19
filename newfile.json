@@ -1,0 +1,26 @@
+{
+  "2022": {
+    "South Korea": 8.1,
+    "Russia": 17.7,
+    "Japan": 21.6,
+    "India": 21.9,
+    "United States": 22.2,
+    "France": 25.5,
+    "China": 30.6,
+    "Germany": 44.4,
+    "Canada": 68.8,
+    "Brazil": 89.2
+  },
+  "2021": {
+    "South Korea": 7.0,
+    "Russia": 19.2,
+    "United States": 20.5,
+    "Japan": 21.0,
+    "India": 21.4,
+    "France": 22.8,
+    "China": 29.1,
+    "Germany": 40.1,
+    "Canada": 67.1,
+    "Brazil": 77.4
+  }
+}
